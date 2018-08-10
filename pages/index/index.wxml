@@ -1,0 +1,141 @@
+<!--index.wxml-->
+<!-- --------------------------------验证弹框--------------------------- -->
+<view class='formBg' catchtouchmove='true' wx:if="{{formBg}}">
+  <image class='delect' src='/images/close.png' bindtap='close'></image>
+  <view class='formContent'>
+    <view class='formTitle'>欢迎来到青蛙家</view>
+    <!-- -----------------------------表单------------------------------- -->
+    <form bindsubmit="formSubmit" bindreset="formReset">
+      <view class="inputbox {{current==1?'currentColor':''}}" bindtap='act' data-id='1'>
+        <image src='/images/phone_icon.png' class='regist_icon'></image>
+        <input type='number' maxlength='11' bindinput='watchPassWord' placeholder-class='placeholder' name="phoneNumber" placeholder='请输入您的手机号'></input>
+      </view>
+
+      <view class="inputbox {{current==3?'currentColor':''}}">
+        <input bindtap='act' data-id='3' class='getCodeInput' name="verificationCode" type='number' maxlength='6' placeholder-class='placeholder' placeholder='输验证码'></input>
+        <image src='/images/passcode_icon.png' class='regist_icon'></image>
+        <view class='getCode' bindtap='getCode' wx:if="{{showcuttime}}">获取验证码</view>
+        <view class='getCode' wx:if="{{!showcuttime}}">{{cuttime}}s后重新获取</view>
+        <view class='clearfix'></view>
+      </view>
+      <button class='submit' formType="submit">登 录</button>
+    </form>
+  </view>
+</view>
+
+
+<image src='/images/logo.png' class='nav_img'></image>
+<view class='location_tip' wx:if="{{shopInfo.is_tx==1}}" bindtap='choose_shop'>{{shopInfo.tx}}</view>
+<view class='searchBox clearfix'>
+  <!-- --------------------------门店地址------------------------- -->
+  <view class='stores_box clearfix' bindtap='choose_shop'>
+    <view class='stores_left'>
+      <image src='{{shopInfo.img_url}}' class='stores_img'></image>
+      <view class='stores_info'>
+        <view class='address'>
+          <view class='address_name'>{{shopInfo.name}}</view>
+          <image src='/images/downIcon.png' class='downIcon'></image>
+        </view>
+        <view class='location'>{{shopInfo.address}}</view>
+      </view>
+    </view>
+    <view class='stores_right'>
+      <view class='fans'>粉丝</view>
+      <view class='fans_num'>{{shopInfo.fans_num}}</view>
+      <view class='fans'>购买指数</view>
+      <view class='fans_num'>{{shopInfo.sale_num}}</view>
+    </view>
+  </view>
+  <!-- ------------------------------------------搜索----------------------------- -->
+  <view class='searchInput'>
+    <input bindinput='searchcontent' confirm-type='search' bindconfirm="searchstart" placeholder='搜索商品' placeholder-class='placeholder' value='{{searchcontent}}'></input>
+    <image bindtap='searchstart' class='searchIcon' src='/images/searchIcon.png'></image>
+    <image bindtap='delect' class='delectIcon' src='/images/delect.png' wx:if="{{showdelect}}"></image>
+  </view>
+</view>
+
+
+<!-- ----------------------------------------商品列表----------------------------- -->
+<view class="goods_list" wx:for="{{goods_list}}" wx:key='goods_list'>
+  <view bindtap='goto_goodsdetail' data-id="{{item.id}}">
+    <image class='goods_img' src='{{item.image_path}}'></image>
+    <view class='focus'>{{item.subscribe_num}}人关注</view>
+    <view class='opacity_bg' wx:if="{{item.is_sellout == 1}}"></view>
+    <image src='/images/hot_sale.png' wx:if="{{item.remark}}" class='hot_sale'></image>
+    <view class='hot_text'>{{item.remark}}</view>
+    <image src='/images/sale_out.png' wx:if="{{item.is_sellout == 1}}" class='sale_out'></image>
+    <view class='goods_title'>
+      <view>{{item.name}}</view>
+      <view style='color:#666;font-size:24rpx;margin-top:5rpx;'>{{item.selling_title}}</view>
+    </view>
+  </view>
+  <view class='goods_details'>
+    <text class='new_price'>￥{{item.saleprice}}</text>
+    <!-- <text class='old_price'>￥{{item.marketprice}}</text> -->
+    <view class='sale_time'>预售时间: {{item.ys_time}}</view>
+    <view class='buy_time'>提货时间: {{item.th_time}}</view>
+    <view class='sale_num'>已售
+      <text style='color:#F97A42'>{{item.sale_num}}</text>份/限量
+      <text style='color:#F97A42'>{{item.sold_num}}</text>份</view>
+    <view class='add_shopcart' wx:if="{{item.is_sellout == 0}}">
+      <view class='addnum_text' data-goods_id="{{item.goods_id}}" data-md_goods_id="{{item.id}}" data-unit_id="{{item.unit_id}}" data-goods_price="{{item.saleprice}}" data-num="{{item.cart_num}}" data-cansale='{{item.limit_num}}' bindtap='add_shopcart'>加入购物车</view>
+      <view class='goods_num' wx:if="{{item.cart_num>=1}}">{{item.cart_num}}</view>
+    </view>
+
+    <view class='add_shopcart1' wx:if="{{item.is_sellout == 1}}">
+      <view class='addnum_text' bindtap='is_sellout'>加入购物车</view>
+    </view>
+  </view>
+  <view class='buyers_list clearfix' bindtap='goto_goodsdetail1' data-id="{{item.id}}">
+    <view class='buy_text' wx:if="{{item.sale_man!=''}}">等刚购买了此商品</view>
+    <view class='user_info' wx:for="{{item.sale_man}}" wx:key="sale_man">
+      <image class='header_img' src='{{item.headimgurl}}'></image>
+      <view class='name'>{{item.nickname}}</view>
+    </view>
+  </view>
+</view>
+
+<image class='no_more' src='/images/no_more.png' wx:if="{{no_more}}"></image>
+
+
+<!-- ------------------------------------选择门店-------------------------- -->
+<view class='choose_shop_bg' wx:if="{{choose_shop}}" catchtouchmove="true"></view>
+<view class='choose_shop_tip' wx:if="{{choose_shop}}">为您优选附近店铺</view>
+<image class='cancle_choose_shop' src='/images/no_choose.png' bindtap='cancle_choose_shop' wx:if="{{choose_shop}}"></image>
+<view class='shop_content' wx:if="{{choose_shop}}">
+  <view class='shop_info_box' wx:for="{{shoplist}}" wx:key='shoplist' bindtap='change_shop' data-sign="{{item.sign}}">
+    <view>{{item.name}}</view>
+    <view class='shop_address'>{{item.address}}</view>
+    <view class='shop_distance'>{{item.distance}}</view>
+  </view>
+</view>
+
+
+
+
+
+<!-- ----------------------------------脚部导航-------------------------- -->
+<view class='footer_box'>
+  <view class='totlenum' wx:if="{{cart_total>=1}}">{{cart_total}}</view>
+  <view class='home'>
+    <image class='home_icon' src='/images/homechoosed.png'></image>
+    <view class='home_text'>首页</view>
+  </view>
+
+  <view class='home' bindtap='goto_next' data-url="/pages/classification/classification">
+    <image class='home_icon' src='/images/classify.png'></image>
+    <view class='home_text'>分类</view>
+  </view>
+
+  <view class='home' bindtap='goto_next' data-url="/pages/shoppingcart/shoppingcart"> 
+    <image class='home_icon' src='/images/shopcart.png'></image>
+    <view class='home_text'>购物车</view>
+  </view>
+
+  <button wx:if="{{isUserInfo}}" class='getUserInfo' bindgetuserinfo='getUserInfo' open-type="getUserInfo"></button>
+  <!-- <button wx:if="{{isUserInfo}}" class='getUserInfo1' bindgetuserinfo='getUserInfo' open-type="getUserInfo"></button> -->
+  <view class='mine' bindtap='goto_next' data-url="/pages/mine/mine">
+    <image class='mine_icon' src='/images/my.png'></image>
+    <view class='mine_text'>我的</view>
+  </view>
+</view>

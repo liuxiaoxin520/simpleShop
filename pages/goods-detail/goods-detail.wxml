@@ -1,0 +1,158 @@
+<!--pages/goods-detail/goods-detail.wxml-->
+<view class='container'>
+    <!-- 内容  -->
+    <view class="root-section1">
+        <!-- 选项卡 -->
+        <view class='choose-box'>
+            <view class="choose-list clear" bindtap='ChooseList' wx:for="{{chooselistData}}" data-listid="{{index}}" wx:key='chooselistData'>
+                <text class="{{currentid==index?'choose-color':''}}">{{item}}</text>
+            </view>
+        </view>
+
+         <!-- 基本信息-->
+        <view class='info-box' wx:if="{{currentid==0}}">
+            <!-- 轮播图 -->
+            <swiper style='height:700rpx;' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+              <block wx:for="{{goods_info.imgs}}" wx:key='banner'>
+                <swiper-item  bindtap="previewImage" >
+                  <image src="{{item}}" class="slide-image"/>
+                </swiper-item>
+              </block>
+            </swiper>
+            <!-- 背景图 -->
+            <view class='btn-green'>
+                <image src='/images/bg_green.png'></image>
+                <!-- 价格 -->
+                <view class='goods-pricebox clear'>
+                    <view class='goods-price clear'>
+                        <view class='goods-currentprice'>￥{{goods_info.saleprice}}</view>
+                        <!-- <view class='goods-greyprice'>￥{{goods_info.marketprice}}</view> -->
+                    </view>
+                    <!-- 倒计时 -->
+                    <view class='goods-time'>
+                        <view class='goods-text'>距结束仅剩</view>
+                        <view class='goods-endtime clear'>
+                            <view class='goods-style'><text class='bg-white'>{{hourtime}}</text>时</view>
+                            <view class='goods-style'><text class='bg-white'>{{mintime}}</text>分</view>
+                            <view class='goods-style'><text class='bg-white'>{{sectime}}</text>秒</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <!-- 基本信息 -->
+            <view class='basic-info'>
+                <view class='info-name'>{{goods_info.name}}</view>
+                <view class='info-btn'>{{goods_info.subscribe_num}}人关注</view>
+                <view class='info-desc clear'>
+                    <view class='info-title'>{{goods_info.selling_title}}</view>  
+                </view>
+                <view class='info-prepratime'>预售时间 {{goods_info.ys_time}}</view>
+                <view class='info-picktimebox clear'>
+                    <view class='info-picktime'>提货时间 {{goods_info.th_time}}</view>
+                    <view class='info-number'>已售<text class='info-style'>{{goods_info.sale_num}}</text>份</view>
+                </view>
+            </view>
+            <!-- 人 -->
+            <view class='buyers_list clearfix'>
+              <view class='buy_text' wx:if="{{goods_info.sale_man!=''}}">等刚购买了此商品</view>
+              <view class='user_info' wx:for="{{goods_info.sale_man}}" wx:key="sale_man">
+                <image class='header_img' src='{{item.headimgurl}}'></image>
+                <view class='name'>{{item.nickname}}</view>
+              </view>
+            </view>
+            
+
+            <view class='goods_details'>
+                <view class='details_title'>- —— 商品详情 —— -</view>
+                <view class='parameter_box clear' wx:for="{{goods_info.norm}}" wx:key="details_content">
+                    <view class='parameter_name'>{{item.name}}</view>
+                    <view class='parameter'>{{item.content}}</view>
+                </view>
+            </view>
+            <image wx:for="{{goods_info.content}}" wx:key="details_image" src="{{item}}" alt="" class='img' mode="widthFix"></image>
+        </view>
+
+        <!-- 购买记录 -->
+        <view class='buy-box' wx:if="{{currentid==1}}">
+            <!-- 人数和总量 -->
+            <view class='buy-all'>
+                目前共<text class='buy-text'>{{num.ren}}</text>人参与购买，商品共销售<text class='buy-text'>{{num.sum}}</text>份
+            </view>
+            <!-- 购买列表 -->
+            <view class='buy-list clear' wx:for="{{listname}}" wx:key="listname">
+                <view class='buy-img'><image src='{{item.headimgurl}}'></image></view>
+                <view class='buy-name'>{{item.nickname}}</view>
+                <view class='buy-number'><text class='buy-text'>{{item.num}}</text>份</view>
+                <view class='buy-time'>{{item.create_time}}</view>
+            </view>
+            <!-- 更多记录 -->
+            <!-- <view class='buy-look'>-点击查看商品信息-</view> -->
+        </view>
+
+    </view>  
+
+    <!-- 底部 -->
+    <view class='root-section2'>
+        <view class='foot-sold' wx:if="{{goods_info.is_sellout==1}}">该商品已售罄</view>
+        <button wx:if="{{isUserInfo}}" class='getUserInfo5' bindgetuserinfo='getUserInfo' open-type="getUserInfo"></button>
+        <view class='foot-box clear'>
+            <view class='cart-box' bindtap='goto_shopcart'>
+                <view class='totlenum' wx:if="{{goods_info.cart_total>=1}}">{{goods_info.cart_total}}</view>
+                <image src='/images/shopcart.png'></image>
+                <view class='img-text'>购物车</view>
+            </view>
+            <view class='add-box'>
+              <view class='cutnumber-img' wx:if="{{goods_info.limit_num != 0}}" bindtap='cut_num' data-goods_id="{{goods_info.goods_id}}"  data-md_goods_id="{{goods_info.id}}" data-unit_id="{{goods_info.unit_id}}" data-goods_price="{{goods_info.saleprice}}" data-num="{{goods_info.cart_num}}" data-cansale="{{goods_info.limit_num}}">
+                    <image src='/images/cut.png'></image>
+                </view>
+                <!-- <view class='cutnumber-img' wx:if="{{goods_info.limit_num == 0}}" bindtap='sail_out'>
+                    <image src='/images/nomore_cut.png'></image>
+                </view> -->
+
+                <view class='addto_cart' wx:if="{{goods_info.limit_num != 0 && goods_info.cart_num == 0}}" bindtap='add_num' data-goods_id="{{goods_info.goods_id}}"  data-md_goods_id="{{goods_info.id}}" data-unit_id="{{goods_info.unit_id}}" data-goods_price="{{goods_info.saleprice}}" data-num="{{goods_info.cart_num}}" data-cansale="{{goods_info.limit_num}}">加入购物车</view>
+
+                <view class='addto_cart' bindtap='sail_out' wx:if="{{goods_info.limit_num == 0}}" style='background:#8a8a8a;color:white'>加入购物车</view>
+
+                <view class='number-unit' wx:if="{{goods_info.limit_num != 0 && goods_info.cart_num != 0}}">{{goods_info.cart_num}}</view>
+                <!-- <view class='number-unit' style='color:#666' wx:if="{{goods_info.limit_num == 0}}">{{goods_info.cart_num}}</view> -->
+
+                <view class='addnumber-img' wx:if="{{goods_info.limit_num != 0}}" bindtap='add_num' data-goods_id="{{goods_info.goods_id}}"  data-md_goods_id="{{goods_info.id}}" data-unit_id="{{goods_info.unit_id}}" data-goods_price="{{goods_info.saleprice}}" data-num="{{goods_info.cart_num}}" data-cansale="{{goods_info.limit_num}}">
+                    <image src='/images/add.png'></image>
+                </view>
+                <!-- <view class='addnumber-img' wx:if="{{goods_info.limit_num == 0}}" bindtap='sail_out'>
+                    <image src='/images/nomore_add.png'></image>
+                </view> -->
+            </view>
+            <view class='charse-box' wx:if="{{goods_info.limit_num != 0}}" bindtap='buynow' data-goods_id="{{goods_info.goods_id}}"  data-goods_price="{{goods_info.saleprice}}" data-num="{{goods_info.cart_num}}" data-md_goods_id="{{goods_info.id}}"  data-unit_id="{{goods_info.unit_id}}">立即购买</view>
+            <view class='charse-box' wx:if="{{goods_info.limit_num == 0}}" style='background:#8a8a8a' bindtap='sail_out'>立即购买</view>
+        </view>
+    </view>
+</view>  
+
+
+
+
+<!--index.wxml-->
+<!-- --------------------------------验证弹框--------------------------- -->
+<view class='formBg' catchtouchmove='true' wx:if="{{formBg}}">
+  <image class='delect' src='/images/close.png' bindtap='close'></image>
+  <view class='formContent'>
+    <view class='formTitle'>欢迎来到青蛙家</view>
+    <!-- -----------------------------表单------------------------------- -->
+    <form bindsubmit="formSubmit" bindreset="formReset">
+      <view class="inputbox {{current==1?'currentColor':''}}" bindtap='act' data-id='1'>
+        <image src='/images/phone_icon.png' class='regist_icon'></image>
+        <input type='number' maxlength='11' bindinput='watchPassWord' placeholder-class='placeholder' name="phoneNumber" placeholder='请输入您的手机号'></input>
+      </view>
+
+      <view class="inputbox {{current==3?'currentColor':''}}">
+        <input bindtap='act' data-id='3' class='getCodeInput' name="verificationCode" type='number' maxlength='6' placeholder-class='placeholder' placeholder='输验证码'></input>
+        <image src='/images/passcode_icon.png' class='regist_icon'></image>
+        <view class='getCode' bindtap='getCode' wx:if="{{showcuttime}}">获取验证码</view>
+        <view class='getCode' wx:if="{{!showcuttime}}">{{cuttime}}s后重新获取</view>
+        <view class='clearfix'></view>
+      </view>
+      <button class='submit' formType="submit">登 录</button>
+    </form>
+  </view>
+</view>

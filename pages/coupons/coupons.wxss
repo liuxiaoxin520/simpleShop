@@ -1,0 +1,97 @@
+/* pages/mine/coupons/coupons.wxss */
+/* 顶部分类 */
+page{
+  /* background: #f1f1f1; */
+  padding-top: 100rpx;
+}
+.hred {
+  display: flex;
+  white-space: nowrap;
+  position: fixed;
+  z-index: 9;
+  top: 0;
+  left: 0;
+  height:80rpx;
+  width: 100%;
+  background: white;
+  box-shadow: 1px 1px 2px #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.hred_type{
+  display: inline-block;
+  line-height: 72rpx;
+  margin:0 82rpx;
+  font-size: 30rpx;
+}
+
+.choosecolor{
+  color: #6fba2c;
+  border-bottom: 4px solid #6fba2c;
+}
+
+/* 优惠券 */
+.coupons{
+  position: relative;
+  width: calc(94% - 40rpx);
+  margin: 0 auto;
+  padding: 0 20rpx;
+  padding-top: 40rpx;
+  margin-bottom: 15rpx;
+  border: 1px solid #6fba2c;
+  border-radius: 25rpx;
+}
+
+.coupons_canuse{
+  display: block;
+  width: 100%;
+  height: 20rpx;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.coupons_top{
+  padding: 60rpx 0;
+}
+
+.coupons_price{
+  color: #6fba2c;
+  width: 25%;
+  font-size: 60rpx;
+  float: left;
+}
+
+.coupons_describe{
+  float: left;
+  width: 50%;
+}
+
+.coupons_text{
+  font-size: 38rpx;
+}
+
+.coupons_time{
+  font-size: 26rpx;
+  color: #999;
+}
+
+.coupons_use{
+  float: right;
+  width: 140rpx;
+  height:60rpx;
+  font-size: 30rpx;
+  text-align: center;
+  line-height: 60rpx;
+  border: 1px solid #6fba2c;
+  color: #6fba2c;
+  border-radius: 12rpx;
+  margin-top: 10rpx;
+}
+
+.coupons_bottom{
+  padding: 20rpx 0;
+  border-top: 1px dashed #e5e5e5;
+  color: #999;
+  font-size: 32rpx;
+}

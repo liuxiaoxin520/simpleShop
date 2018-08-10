@@ -1,0 +1,148 @@
+/**app.wxss**/
+.clearfix::after{
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+.clear::after{
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+.footer_box,.getUserInfo{
+  position: fixed;
+  background: white;
+  z-index: 99;
+  left: 0;
+  bottom: 0;
+  padding: 10rpx 40rpx;
+  width: calc(100% - 80rpx);
+  height: 100rpx;
+  border-top: 1px solid #e5e5e5;
+}
+
+.home{
+  width: 120rpx;
+  float: left;
+  margin-right: calc((100% - 560rpx) / 2)
+}
+
+.mine{
+  width: 120rpx;
+  float: right;
+}
+
+
+/* .getUserInfo1{
+  position: absolute;
+  bottom: 5rpx;
+  right: 30rpx;
+  width: 120rpx;
+  height: 120rpx;
+  background: #6fba2c;
+} */
+
+.getUserInfo,.getUserInfo1,.getUserInfo5{
+  opacity: 0;
+}
+
+.shopping_text{
+  text-align: center;
+  color: white;
+  font-size: 26rpx;
+}
+
+.home_icon,.mine_icon{
+  display: block;
+  width: 52rpx;
+  height: 52rpx;
+  margin: 0 auto;
+  margin-top: 10rpx;
+}
+
+.cart_icon{
+  display: block;
+  width: 72rpx;
+  height: 72rpx;
+  margin: 0 auto;
+  margin-top: 14rpx;
+}
+
+.home_text,.mine_text{
+  text-align: center;
+  color: #666;
+  font-size: 26rpx;
+}
+
+.no_more{
+  display: block;
+  width: 24%;
+  height: 40rpx;
+  margin: 0 auto;
+}
+
+.totlenum {
+  animation: big 0.5s ease-out;
+  position: absolute;
+  z-index: 100;
+  top: 5rpx;
+  left: 58%;
+  margin-left: 16rpx;
+  min-width: 40rpx;
+  height: 40rpx;
+  font-size: 24rpx;
+  line-height: 40rpx;
+  text-align: center;
+  background: white;
+  border-radius: 50%;
+  color: #6fba2c;
+  font-weight: bold;
+  border: 1px solid #6fba2c;
+}
+
+::-webkit-scrollbar{
+width: 0;
+height: 0;
+color: transparent;
+}
+
+/* 无返回内容占位图 */
+.noreturn_show{
+  position: fixed;
+  top: 40%;
+  margin-top: -150rpx;
+  width: 100%;
+  height: 300rpx;
+}
+
+.noreturn_img{
+  width: 300rpx;
+  height: 240rpx;
+  display: block;
+  margin:  0 auto;
+}
+
+.noreturn_title{
+  text-align: center;
+  font-size: 32rpx;
+  color: #666;
+}
+
+.goto_buy{
+  width: 240rpx;
+  height: 70rpx;
+  margin: 0 auto;
+  margin-top: 60rpx;
+  border-radius: 10rpx;
+  color: #6fba2c;
+  font-size: 32rpx;
+  text-align: center;
+  line-height: 70rpx;
+  border: 1px solid #6fba2c;
+}

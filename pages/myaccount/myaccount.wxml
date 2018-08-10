@@ -1,0 +1,20 @@
+<!--pages/myaccount/myaccount.wxml-->
+<!-- 充值卡 -->
+<view class='myaccount_card_box'>
+  <image class='myaccount_card' src='/images/myaccount_card.png'></image>
+  <view class='money_num'><text style='font-size:30rpx;'>￥</text>2312.23</view>
+  <view class='goto_mymoney' bindtap='goto_mymoney'></view>
+</view>
+
+<!-- 账户明细 -->
+<view class='account_details'>
+  <view class='account_title'>账户明细</view>
+  <view class='account_list clearfix' wx:for="{{3}}">
+    <image class='account_icon' src='/images/ydzf_icon.png'></image>
+    <view class='account_center'>
+      <view class='use_place'>移动商城-消费</view>
+      <view class='use_time'>08-08 14:00</view>
+    </view>
+    <view class='user_much'>-200.5</view>
+  </view>
+</view>

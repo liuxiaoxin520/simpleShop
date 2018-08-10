@@ -1,0 +1,48 @@
+<!--pages/mine/order/order.wxml-->
+<!-- 标题 -->
+<scroll-view class="hred" scroll-x='true' >
+  <view class="hred_type {{choosecolor==index+1?'choosecolor':''}}" bindtap="choosetype"  data-id="{{index+1}}" wx:for="{{title}}" wx:key="title">{{item.name}}</view>
+  <view class='clearfix'></view>
+</scroll-view>
+
+<!-- 列表渲染 -->
+<view class='listBox' wx:for="{{list_info}}" wx:key="list_info">
+  <view class='list' bindtap='goto_orderdetails' data-orderstatus="{{item.order_status}}"  data-id="{{item.id}}">
+    <view class='list_top clearfix'>
+      <view class='order_num'>订单编号：{{item.sn}}</view>
+      <view class='order_state' wx:if="{{item.order_status==2}}">待付款</view>
+      <view class='order_state' wx:if="{{item.order_status==3}}">待取货</view>
+      <view class='order_state' wx:if="{{item.order_status==4}}">已取货</view>
+      <!-- <view class='order_sure' wx:if="{{item.pick==2}}">已取货</view> -->
+    </view>
+    <view class='list_center clearfix'>
+      <view class='imagebox'  wx:for="{{item.goods}}" wx:for-item="goods" wx:key="goods">
+        <image class='goodsimg' src='{{goods.thumb_url}}'></image>
+      </view>
+      <view class='more_hide' wx:if="{{item.goods.length>3}}">•••</view>
+      <view class='goods_describe'>
+        <view class='goods_money'><text style='font-size:28rpx;'>￥</text>{{item.total}}</view>
+        <view class='goods_num'>共<text style='font-size:34rpx;'>{{item.snum}}</text>件</view>
+      </view>
+    </view>
+    <view class='list_bottom clearfix'>
+      <image class='clock_icon' src='/images/time_icon.png'></image>
+      <view class='order_time'>{{item.create_time}}</view>
+      <view class='order_sure' wx:if="{{item.order_status==2}}">去付款</view>
+      <view class='order_sure' wx:if="{{item.order_status==3}}">去取货</view>
+      <view class='order_sure' wx:if="{{item.order_status==4}}">已完成</view>
+      <!-- <view class='order_sure' wx:if="{{item.pick==2}}">已取货</view> -->
+    </view>
+  </view>
+</view>
+
+
+
+<!-- 没有任何商品 -->
+<view class='noreturn_show' wx:if="{{no_order}}">
+  <image class='noreturn_img' src='/images/no_order.png'></image>
+  <view class='noreturn_title'>没有相关订单</view>
+  <view class='goto_buy' bindtap='goto_buy'>去购物</view>
+</view>
+
+

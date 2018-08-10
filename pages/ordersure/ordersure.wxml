@@ -1,0 +1,76 @@
+<!--pages/mine/orderdetails/orderdetails.wxml-->
+<!-- ---------------------------确认订单--------------------------- -->
+<view class='headerbox clearfix'>
+  <view class='user_text'>取货人:</view>
+  <view class='user_name'>{{customer.nickname}}</view>
+  <view class='phone_number'>{{customer.mobile}}</view>
+</view>
+
+
+<view class='address_info clearfix'>
+  <view class='address_left'>
+    <view class='address_left_name'>{{store.name}}</view>
+    <view class='address_left_detail'><text style='color:#6fba2c'>门店自提地址：</text>{{store.address}}</view>
+  </view>
+</view>
+
+  <view class='contact'>
+    <view class='contact_phone'>自提时间：<text style='color:#6fba2c'>{{info_list.zt_time}}</text></view>
+  </view>
+<!-- <view class='contact' bindtap='calling' data-calling="{{store.phone}}">
+    <view class='contact_phone'>联系商家: <text style='color:#2FC741'>{{store.phone}}</text></view>
+  </view> -->
+<image src='/images/add_line.png' class='add_line'></image>
+
+
+<!-- 商品列表 -->
+<view class='goods_list clearfix' wx:for="{{goods}}" wx:key="goods">
+  <image class='goodsimg' src='{{item.thumb_url}}'></image>
+  <view class='right_content'>
+    <view class='right_title'>{{item.name}}</view>
+    <view class='right_describe'>{{item.selling_title}}</view>
+    <view class='moneybox'>
+      <!-- <view class='time'>提货时间 7月25日 16：00</view> -->
+      <view class='price'><text style='font-size:26rpx'>￥</text>{{item.price}}</view>
+    </view>
+    <view class='num'>x{{item.num}}</view>
+  </view>
+</view>
+
+<view class='sure_box'>
+  <view class='sure_button3'><text style='font-size:26rpx;color:#666'>(共{{info_list.snum}}件) 合计:</text> <text style='font-size:26rpx'>￥</text>{{info_list.total}}</view>
+  <view class='sure_button4' bindtap='makesure'>确认订单</view>
+</view>
+
+<view class='bg_modle' wx:if="{{makesure}}">
+<view class='modle_content'>
+  <view class='friendly_tip'>此商品需要您到店自提，请仔细确认地址！</view>
+    <view class='address_info1 clearfix'>
+    <view class='address_left'>
+      <view class='address_left_name'>{{store.name}}</view>
+      <view class='address_left_detail'><text style='color:#6fba2c'>门店自提地址：</text>{{store.address}}</view>
+    </view>
+  </view>
+
+<!-- 配送时间 -->
+<view class='arrived_box clearfix'>
+  <view class='arrived_text'>自提时间：</view>
+  <view class='arrived_time'>
+  <view class='time'>{{info_list.zt_time}}</view>
+    <!-- <picker bindchange="bindDateChange" range='{{daytime}}' class='active'> 
+      <view>{{daytime[dayIndex]}}</view>
+    </picker>
+  </view>
+  <view class='arrived_time'>
+    <picker bindchange="bindDateChange1" range='{{hourtime}}' class='active'> 
+      <view>{{hourtime[hourIndex]}} 到店自提</view>
+    </picker> -->
+  </view>
+</view>
+
+  <view class='sure_box1'>
+    <view class='sure_button3' bindtap='cancel'>取消付款</view>
+    <view class='sure_button4' bindtap='pay' data-orderid="{{info_list.id}}" data-sn="{{info_list.sn}}">确认支付</view>
+  </view>
+</view>
+</view>

@@ -1,0 +1,74 @@
+/* pages/myaccount/myaccount.wxss */
+page{
+  background: #f1f1f1;
+}
+.myaccount_card_box{
+  position: relative;
+  width: 92%;
+  height: 340rpx;
+  margin-left: 4%;
+  margin-top: 20rpx;
+  box-shadow: 0 0 10px #ccc;
+  border-radius: 20rpx;
+}
+
+.myaccount_card{
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.money_num{
+  position: absolute;
+  left: 28rpx;
+  bottom: 20rpx;
+  font-size: 50rpx;
+}
+
+.goto_mymoney{
+  position: absolute;
+  width: 100rpx;
+  height: 40rpx;
+  top: 30rpx;
+  right: 0;
+}
+
+/* 账户明细 */
+.account_details{
+  margin-top: 40rpx;
+  background: white;
+  font-size: 32rpx;
+}
+
+.account_title{
+  padding: 20rpx 30rpx;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.account_list{
+  padding: 20rpx 30rpx;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.account_icon{
+  float:left;
+  display: block;
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.account_center{
+  float: left;
+  margin-left: 20rpx;
+}
+
+.use_time{
+  font-size: 26rpx;
+  color: #999;
+  margin-top: 5rpx;
+}
+
+.user_much{
+  float: right;
+  line-height: 80rpx;
+}

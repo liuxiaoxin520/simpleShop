@@ -1,0 +1,69 @@
+<!-- 头部导航 -->
+<view class='navbarbox'>
+  <image class='navbarimg' src='/images/headimg.png'></image>
+  <view class='heardinfo clearfix'>
+    <image src='{{user_info.headimgurl}}' class='avatarurl'></image>
+    <view class='nameinfo'>
+      <view class='nickname'>{{user_info.nickname}}</view>
+      <view class='phonenumber'>{{user_info.mobile}}</view>
+    </view>
+  </view>
+</view>
+
+<!-- 余额积分信息 -->
+<view class='clearfix'>
+  <view class='showinfo' bindtap='gotoNext' data-id='{{index}}' wx:for="{{showinfo}}" wx:key="showinfo">
+    <view class='shownumber' style='color:{{item.color}}'>{{item.shownumber}}</view>
+    <view class='showname'>{{item.showname}}</view>
+  </view>
+</view>
+
+
+<view class='padding'></view>
+<!-- 我的订单 -->
+<view class='orderlist'>
+  <view class='number' wx:if="{{user_info.notpay > 0}}">{{user_info.notpay}}</view>
+  <view class='notpick' wx:if="{{user_info.notpick > 0}}">{{user_info.notpick}}</view>
+  <view class='ordertop clearfix' bindtap='gotoOrder' data-id='100'>
+    <view class='ordertitle'>我的全部订单</view>
+    <image src='/images/jump.png' class='jump_more'></image>
+  </view>
+  <view class='orderbottom clearfix'>
+    <view class='order_list' wx:for="{{order_list}}" bindtap='gotoOrder' data-id='{{index}}' wx:key="order_list">
+      <image class="order_icon" src='{{item.icon}}'></image>
+      <view class="order_name">{{item.name}}</view>
+    </view>
+  </view>
+</view>
+
+<!-- <view class='goto_buy1' bindtap='goto_next' data-url="/pages/index/index">去购物</view> -->
+<!-- <view class='out_login'>联系客服</view> -->
+  <button open-type="contact" session-from='weapp' class='out_login clearfix'>
+    联系客服
+  </button>
+
+
+
+<!-- ----------------------------------脚部导航-------------------------- -->
+<view class='footer_box'>
+  <view class='totlenum' wx:if="{{totlenum>=1}}" >{{totlenum}}</view>
+  <view class='home' bindtap='goto_next' data-url="/pages/index/index">
+    <image class='home_icon' src='/images/home.png'></image>
+    <view class='home_text'>首页</view>
+  </view>
+
+  <view class='home'>
+    <image class='home_icon' src='/images/classify.png' data-url="/pages/classification/classification" bindtap='goto_next'></image>
+    <view class='home_text'>分类</view>
+  </view>
+
+  <view class='home' bindtap='goto_next' data-url="/pages/shoppingcart/shoppingcart">
+    <image class='home_icon' src='/images/shopcart.png'></image>
+    <view class='home_text'>购物车</view>
+  </view>
+
+  <view class='mine' bindtap='goto_next'>
+    <image class='mine_icon' src='/images/mychoosed.png'></image>
+    <view class='mine_text'>我的</view>
+  </view>
+</view>

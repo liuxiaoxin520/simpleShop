@@ -1,0 +1,87 @@
+<!--pages/mine/orderdetails/orderdetails.wxml-->
+<!-- -----------------待取货------------------- -->
+<view class='headerbox clearfix' wx:if="{{isshow==3}}">
+  <image src='/images/for_pickup.png' class='header_icon'></image>
+  <view bindtap='qr_code' class='header_icon_text'>待取货</view>
+  <image bindtap='qr_code' class='qr_code' src='/images/qr_code.png'></image>
+  <view class='qr_text'>取货码 <text style='color:#F97A42;font-size:34rpx'></text></view>
+</view>
+
+<view class='qr_code_bg' wx:if="{{qr_code_bg}}" bindtap='qr_code_bg'>
+  <view class='qr_code_tip'>取货码</view>
+</view>
+<image class='qr_code_big'  wx:if="{{qr_code_bg}}" src='{{qcode}}'></image>
+
+<!-- -----------------待付款------------------- -->
+<view class='headerbox clearfix' wx:if="{{isshow==2}}">
+  <image src='/images/for_pay.png' class='header_icon'></image>
+  <view class='header_icon_text'>待付款</view>
+</view>
+
+<!-- -----------------完成交易------------------- -->
+<view class='headerbox clearfix' wx:if="{{isshow==4}}">
+  <image src='/images/alredy_buy.png' class='header_icon'></image>
+  <view class='header_icon_text'>交易已完成</view>
+</view>
+
+<!-- -----------------取消交易------------------- -->
+<!-- <view class='headerbox clearfix' wx:if="{{isshow==4}}">
+  <image src='/images/cancle.png' class='header_icon'></image>
+  <view class='header_icon_text'>交易已取消</view>
+</view> -->
+
+
+<view class='address_info clearfix'>
+  <view class='userInfo_box clearfix'>
+    <view class='user_text'>取货人:</view>
+    <view class='user_name'>{{customer.nickname}}</view>
+    <view class='phone_number'>{{customer.mobile}}</view>
+  </view>
+  <view class='address_left'>
+    <view class='address_left_name'>{{store.name}}</view>
+    <view class='address_left_detail'><text style='color:#6fba2c'>门店自提地址：</text>{{store.address}}</view>
+  </view>
+</view>
+<view class='contact'>
+    <view class='contact_phone'>自提时间：<text style='color:#6fba2c'>{{info_list.zt_time}}</text></view>
+  </view>
+<!-- <view class='contact' bindtap='calling'>
+    <view class='contact_phone'>联系商家: <text style='color:#2FC741'>027-8888-8888</text></view>
+  </view> -->
+<image src='/images/add_line.png' class='add_line'></image>
+
+
+<!-- 商品列表 -->
+<view class='info_show clearfix'>
+  <view class='info_show_left'>商品信息(共{{info_list.snum}}件商品)</view>
+  <view class='info_show_right_buy' bindtap='goto_buy'>去购物</view>
+</view>
+<view class='goods_list clearfix' wx:for="{{goods}}">
+  <image class='goodsimg' src='{{item.thumb_url}}'></image>
+  <view class='right_content'>
+    <view class='right_title'>{{item.name}}</view>
+    <view class='right_describe'>{{item.selling_title}}</view>
+    <view class='moneybox'>
+      <!-- <view class='time'>提货时间 7月25日 16：00</view> -->
+      <view class='price'><text style='font-size:26rpx'>￥</text>{{item.price}}</view>
+    </view>
+    <view class='num'>x{{item.num}}</view>
+  </view>
+</view>
+<view class='info_show clearfix'>
+  <view class='info_show_left'>合计</view>
+  <view class='info_show_right'>￥{{info_list.total}}</view>
+</view>
+
+<!-- 订单信息 -->
+<view class='order_info clearfix'>
+  <view class='pricenum'>￥{{info_list.total}}</view>
+  <view class='create_time'>创建时间：{{info_list.create_time}}</view>
+  <view class='order_num'>订单编号：{{info_list.sn}}</view>
+</view>
+
+<!-- 确认按钮 -->
+<view class='sure_box'wx:if="{{isshow==2}}">
+  <view class='sure_button2' bindtap='pay' data-sn="{{info_list.sn}}" data-orderid="{{info_list.id}}">付款{{info_list.total}}</view>
+  <!-- <view class='sure_button1'>取消订单</view> -->
+</view>

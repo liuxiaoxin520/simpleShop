@@ -1,0 +1,168 @@
+/* pages/mine/mine.wxss */
+/* 头部导航 */
+page{
+  /* background: #f1f1f1; */
+  padding-bottom: 120rpx;
+}
+.navbarbox{
+  position: relative;
+  width: 100%;
+  height: 260rpx;
+}
+
+.navbarimg{
+  width: 100%;
+  height: 100%;
+}
+
+.heardinfo{
+  position: absolute;
+  left: 40rpx;
+  top:40rpx;
+  height: 200rpx;
+}
+
+.nameinfo{
+  float: left;
+  margin-top: 40rpx;
+  margin-left: 20rpx;
+  font-size: 32rpx;
+  color: white;
+}
+
+.nickname{
+  margin-bottom: 10rpx;
+}
+
+.avatarurl{
+  float: left;
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  border:3px solid white;
+  background-image: url("https://wb.qingwajia.cn/static/module/common/qingwajia/img/icon_default.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+/* 余额积分信息 */
+.showinfo{
+  padding: 20rpx 0;
+  width: 25%;
+  float: left;
+  text-align: center;
+  font-size: 30rpx;
+  color: #333;
+}
+
+.shownumber{
+  font-size: 40rpx;
+}
+
+
+/* 我的订单 */
+.orderlist{
+  position: relative;
+  background: white;
+  margin-top: 14rpx;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.number,.notpick{
+  position: absolute;
+  min-width: 40rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  text-align: center;
+  font-size: 24rpx;
+  top: 140rpx;
+  left: 140rpx;
+  color: #6fba2c;
+  background: white;
+  border: 1px solid #6fba2c;
+  font-weight: bold;
+  border-radius: 50%;
+}
+
+.notpick{
+  top: 140rpx;
+  left: 390rpx;
+}
+
+.ordertop{
+  width: calc(100% - 60rpx);
+  padding: 30rpx;
+  border-bottom: 1px solid #e5e5e5;
+  /* border-top: 1px solid #e5e5e5; */
+}
+
+.padding{
+  width: 100%;
+  height: 10rpx;
+  background: #f1f1f1;
+}
+
+.jump_more{
+  width: 30rpx; 
+  height: 30rpx;
+  float: right;
+  margin-top: 8rpx;
+}
+
+.ordertitle{
+  float: left;
+  font-size: 32rpx;
+}
+
+.ordermore{
+  float: right;
+  font-size: 32rpx;
+  color: #666;
+}
+
+.order_list{
+  float: left;
+  border-right: 1px solid #e5e5e5;
+  width: calc(33.3% - 1px);
+  height: 250rpx;
+}
+
+.order_icon{
+  display: block;
+  margin: 0 auto;
+  margin-top: 50rpx;
+  margin-bottom: 10rpx;
+  width: 80rpx;
+  height:80rpx;
+}
+
+.order_name{
+ font-size: 32rpx;
+ text-align: center;
+}
+
+.goto_buy1{
+  width: calc(100% - 60rpx);
+  height: 100rpx;
+  margin-left: 30rpx;
+  background: #6fba2c;
+  color: white;
+  font-size: 36rpx;
+  border-radius: 20rpx;
+  text-align: center;
+  line-height: 100rpx;
+  margin-top: 100rpx;
+}
+
+.out_login{
+  width: calc(100% - 60rpx);
+  height: 100rpx;
+  background: #6fba2c;
+  margin-left: 30rpx;
+  font-size: 36rpx;
+  border-radius: 20rpx;
+  text-align: center;
+  line-height: 100rpx;
+  margin-top: 80rpx;
+  color: white
+}

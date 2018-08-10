@@ -1,0 +1,98 @@
+/* pages/mine/mymoney/mymoney.wxss */
+page{
+  background: #f1f1f1;
+  padding: 30rpx 0;
+}
+/* 充值 */
+.money_box{
+  position: relative;
+  float: left;
+  width: calc(50% - 2px - 40rpx);
+  height: 140rpx;
+  border: 1px solid #ccc;
+  border-radius: 10rpx;
+  margin: 20rpx;
+  background: #fefefe;
+}
+
+.choose_icon{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.giving_much{
+  position: absolute;
+  z-index: 2;
+  text-align: center;
+  line-height: 60rpx;
+  font-size: 30rpx;
+  color: white;
+  top: 0;
+  right: 0;
+  width: 140rpx;
+  height: 60rpx;
+}
+
+.giving_bg{
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 160rpx;
+  height: 60rpx;
+}
+
+
+.up_much{
+  font-size: 42rpx;
+  color: #6fba2c;
+  margin-top: 20rpx;
+  margin-left: 20rpx;
+}
+
+.up_text{
+  font-size: 26rpx;
+  color: #666;
+  margin-left: 20rpx;
+  margin-top: 10rpx;
+}
+
+.sure_button,.choosed_color{
+  width: calc(100% - 40rpx);
+  height: 90rpx;
+  margin: 40rpx 0;
+  margin-left: 20rpx;
+  background: #ccc;
+  color: white;
+  text-align: center;
+  line-height: 90rpx;
+  font-size: 32rpx;
+  border-radius: 10rpx;
+}
+
+.choosed_color{
+  background:#6fba2c;
+}
+
+.border_color{
+  border: 1px solid #6fba2c;
+}
+
+/* 友好提醒 */
+.tipbox{
+  padding: 40rpx;
+}
+
+.tip{
+  font-size: 34rpx;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+.tiptext{
+  font-size: 26rpx;
+  color: #999;
+  margin-top: 20rpx;
+}

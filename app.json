@@ -1,0 +1,23 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/mine/mine",
+    "pages/share/share",
+    "pages/ordersure/ordersure",
+    "pages/order/order",
+    "pages/orderdetails/orderdetails",
+    "pages/shoppingcart/shoppingcart",
+    "pages/goods-detail/goods-detail",
+    "pages/classification/classification",
+    "pages/mymoney/mymoney",
+    "pages/myaccount/myaccount",
+    "pages/coupons/coupons",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#6fba2c",
+    "navigationBarTitleText": "青蛙家",
+    "navigationBarTextStyle": "white"
+  }
+}

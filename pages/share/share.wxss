@@ -1,0 +1,176 @@
+/* pages/share/share.wxss */
+page{
+  background: #f1f1f1;
+  padding-bottom: 40rpx;
+}
+
+.detail_box{
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+  background: white;
+}
+
+.goods_img{
+  display: block;
+  width: 280rpx;
+  height: 280rpx;
+  float: left;
+  margin-right: 20rpx;
+  background: #6fba2c;
+}
+
+.goods_info{
+  position: relative;
+  height: 280rpx;
+  float: left;
+  width: calc(100% - 300rpx);
+}
+
+.goods_title{
+  margin-bottom: 10rpx;
+  font-size: 32rpx;
+  display:-webkit-box;
+  word-break: break-all;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
+  overflow: hidden;
+  text-overflow:ellipsis;
+}
+
+.sale_time,.buy_time{
+  font-size: 26rpx;
+  color: #6fba2c
+}
+
+.pricebox{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.new_price{
+  font-size: 36rpx;
+  color: #F97A42;
+}
+
+.old_price{
+  font-size: 24rpx;
+  margin-left: 10rpx;
+  color: #666;
+  text-decoration: line-through;
+}
+
+.sale_num{
+  font-size: 24rpx;
+  margin-top: 10rpx;
+}
+
+/* 倒计时 */
+/* 价格 */
+.btn-green{
+  width:100%;
+  position: relative;
+}
+.btn-green image{
+  width:100%;
+  height:120rpx;
+  display: block;
+}
+.goods-pricebox{
+  position: absolute;
+  top:0;
+  left:20rpx;
+  width:94%;
+}
+.goods-price{
+  float:left;
+}
+.goods-currentprice{
+  color:#fff;
+  font-size:38rpx;
+  float:left;
+  height:60rpx;
+  line-height: 60rpx;
+  margin:30rpx 0;
+}
+.goods-greyprice{
+  color:#fff;
+  font-size:26rpx;
+  text-decoration: line-through;
+  float:left;
+  height:60rpx;
+  line-height: 65rpx;
+  margin:30rpx 20rpx ;
+}
+/* 倒计时 */
+.goods-time{
+  float:right;
+  font-size:28rpx;
+  color:#fff;
+  margin:15rpx;
+}
+.goods-text,.goods-endtime{
+  text-align: center;
+  padding:5rpx 0;
+}
+.goods-style{
+  float:left;
+}
+.bg-white{
+  width:10rpx;
+  height:20rpx;
+  padding: 0 10rpx;
+  font-weight: bold;
+  color: black;
+  background: white;
+  text-align: center;
+  line-height: 20rpx;
+  margin:10rpx;
+}
+
+.howmuch_buy{
+  padding: 20rpx 0;
+  background: white;
+  font-size: 26rpx;
+  text-align: center;
+  border-top:1px solid #e5e5e5;
+  border-bottom:1px solid #e5e5e5;
+}
+
+.img_box{
+  width: calc(100% - 40rpx);
+  padding:20rpx;
+  background: white;
+  height: 100rpx;
+  overflow: hidden;
+}
+
+.imagelist{
+  float: left;
+  width: calc((100% - 70rpx) / 7);
+  height: 94rpx;
+  border-radius: 50%;
+  margin: 5rpx;
+}
+
+.Contact_service{
+  width: calc(100% - 40rpx);
+  margin-left: 20rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  background: #6fba2c;
+  border: none;
+  border-radius: 10rpx;
+  color: white;
+  margin-top: 50rpx;
+  
+}
+
+button::after{
+  border: none;
+  border-radius: 10rpx;
+}
+
+.look_more{
+  max-height: 530rpx
+}

@@ -1,0 +1,22 @@
+<!--pages/mine/coupons/coupons.wxml-->
+<!-- 标题 -->
+<view class="hred clearfix">
+  <view class="hred_type {{choosecolor==index+1?'choosecolor':''}}" bindtap="choosetype"  data-id="{{index+1}}" wx:for="{{title}}" wx:key="title">{{item.name}}</view>
+  <view class='clearfix'></view>
+</view>
+
+<!-- 优惠券 -->
+<view class='coupons' wx:for="{{3}}">
+<image class='coupons_canuse' class='coupons_canuse' src='/images/coupon_canuse.png'></image>
+  <view class='coupons_top clearfix'>
+    <view class='coupons_price'>100<text style='font-size:26rpx;'>元</text></view>
+    <view class='coupons_describe'>
+      <view class='coupons_text'>满199减20元券</view>
+      <view class='coupons_time'>2018.06.11-2018.06.11</view>
+    </view>
+    <view class='coupons_use'>去使用</view>
+  </view>
+  <view class='coupons_bottom'>
+    全场通用：限时购 
+  </view>
+</view>

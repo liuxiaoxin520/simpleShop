@@ -1,0 +1,130 @@
+/* pages/mine/order/order.wxss */
+/* 顶部分类 */
+page{
+  background: #f1f1f1;
+  padding-top: 90rpx;
+}
+.hred {
+  display: flex;
+  white-space: nowrap;
+  position: fixed;
+  z-index: 9;
+  top: 0;
+  left: 0;
+  height:80rpx;
+  background: white;
+  box-shadow: 1px 1px 2px #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.hred_type{
+  display: inline-block;
+  line-height: 72rpx;
+  margin:0 52rpx;
+  font-size: 30rpx;
+}
+
+.choosecolor{
+  color: #6fba2c;
+  border-bottom: 4px solid #6fba2c;
+}
+
+/* 列表 */
+.listBox{
+  margin-bottom: 10rpx;
+}
+
+.list{
+  width: 100%;
+  background: white;
+  margin-bottom: 8rpx;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.list_top{
+  padding:26rpx 30rpx;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.order_num{
+  font-size: 28rpx;
+  float: left;
+}
+
+.order_state{
+  font-size: 28rpx;
+  color: #6fba2c;
+  float: right;
+}
+
+.list_center{
+  padding:30rpx;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.imagebox{
+  float: left;
+}
+
+.goodsimg{
+  float: left;
+  width: 120rpx;
+  height: 120rpx;
+  margin-right: 10rpx;
+}
+
+.more_hide{
+  float: left;
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  margin-left: 10rpx;
+  font-size: 50rpx;
+  line-height: 120rpx;
+  color: #666;
+}
+
+.goods_describe{
+  float: right;
+  text-align: right;
+  margin-top: 10rpx;
+}
+
+.goods_money{
+  font-size: 34rpx;
+  color: #F97A42;
+  margin-bottom: 10rpx;
+}
+
+.goods_num{
+  font-size: 30rpx;
+
+}
+
+.list_bottom{
+  padding:30rpx;
+}
+
+.clock_icon{
+  width: 40rpx;
+  height: 40rpx;
+  margin-top: 12rpx;
+  margin-right: 10rpx;
+  float: left;
+}
+
+.order_time{
+  font-size: 32rpx;
+  float: left;
+  margin-top: 10rpx;
+  color: #333;
+}
+
+.order_sure{
+  font-size: 32rpx;
+  color: #F97A42;
+  border:2px solid #F97A42;
+  border-radius: 15rpx;
+  padding:7rpx 16rpx;
+  float: right;
+}

@@ -1,0 +1,101 @@
+<!--pages/shoppingcart/shoppingcart.wxml-->
+<!-- 列表 -->
+<view class='listBox clearfix' wx:for="{{shopcart_list}}" wx:key="list ">
+  <view class='left_nav'>
+    <icon bindtap='changestate' wx:if="{{showicon[index]==true}}" data-id="{{index}}" type="success" color="#999"></icon>
+    <icon bindtap='changestate' wx:if="{{showicon[index]==false}}" data-id="{{index}}" type="success" color='#6fba2c'></icon>
+  </view>
+  <view class='right_nav'>
+    <view class='right_list clearfix'>
+      <image class='goodsimg' src='{{item.image_path}}'></image>
+      <view class='right_content'>
+        <view class='right_title'>{{item.goods_name}}</view>
+        <view class='right_describe'>{{item.selling_title}}</view>
+        <view class='moneybox'>
+          <text class='newmoney'>￥{{item.goods_price}}</text>
+          <!-- <text class='oldmoney'>￥{{item.market_price}}</text> -->
+        </view>
+        <view class='num'>{{item.num}}</view>
+        <image class='cut' bindtap='cut_num'  wx:if="{{item.num>1}}" src='/images/cut.png' data-goods_id="{{item.goods_id}}"  data-md_goods_id="{{item.md_goods_id}}" data-unit_id="{{item.unit_id}}" data-goods_price="{{item.goods_price}}" data-num="{{item.num}}" data-cansale="{{item.limit_num}}"></image>
+        
+        <image class='add' bindtap='add_num' wx:if="{{item.num < item.limit_num && item.num < item.sold_num}}" src='/images/add.png' data-goods_id="{{item.goods_id}}"  data-md_goods_id="{{item.md_goods_id}}" data-unit_id="{{item.unit_id}}" data-goods_price="{{item.goods_price}}" data-num="{{item.num}}" data-cansale="{{item.limit_num}}"></image>
+
+        <image class='cut' bindtap='nomore_cut' data-goods_id="{{item.goods_id}}"  data-md_goods_id="{{item.md_goods_id}}" data-unit_id="{{item.unit_id}}" data-goods_price="{{item.goods_price}}" wx:if="{{item.num==1}}" src='/images/nomore_cut.png'></image>
+        <image class='add' bindtap='nomore_add' wx:if="{{item.num>=item.limit_num || item.num>=item.sold_num}}" src='/images/nomore_add.png'></image>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<!-- 售罄列表 -->
+<view class='listBox clearfix' wx:for="{{sale_out}}" wx:key="sale_out">
+  <view class='left_nav' bindtap='sale_out_delect' data-goods_id="{{item.goods_id}}"  data-md_goods_id="{{item.md_goods_id}}" data-unit_id="{{item.unit_id}}" data-goods_price="{{item.goods_price}}" data-num="{{item.num}}" data-cansale="{{item.limit_num}}">
+    <image src='/images/no_sale.png'></image>
+  </view>
+  <view class='right_nav' bindtap='sale_out' >
+    <view class='right_list clearfix'>
+      <image class='goodsimg' src='{{item.image_path}}'></image>
+      <view class='right_content'>
+        <view class='right_title'>{{item.goods_name}}</view>
+        <view class='right_describe'>买一送一清爽一见覅圣诞节夏</view>
+        <view class='moneybox'>
+          <text class='newmoney' style='color:#8a8a8a'>￥{{item.goods_price}}</text>
+          <text class='oldmoney'>已售罄</text>
+        </view>
+        <view class='num'>{{item.num}}</view>
+        <image class='cut' src='/images/nomore_cut.png'></image>
+        <image class='add' src='/images/nomore_add.png'></image>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 结算 -->
+<view class='buybox' wx:if="{{shopcart_list!='' || sale_out!=''}}">
+  <view class='chooseall'>
+    <icon bindtap='chooseall' wx:if="{{!chooseall}}" type="success" color="#999"></icon>
+    <icon bindtap='chooseall' wx:if="{{chooseall}}" type="success" color='#6fba2c'></icon>
+    <text>全选</text>
+  </view>
+  <view class='right'  bindtap='goto_ordersure'>提交订单({{goodsnum}})</view>
+  <view class='center'>
+    <view class='totle_money'>合计:
+      <text style='color:#6fba2c;font-size:34rpx'>￥{{totleprice}}</text>
+    </view>
+    <!-- <view class='cunt_money'>已优惠:￥{{youhuiprice}}</view> -->
+  </view>
+</view>
+
+<!-- 没有任何商品 -->
+<view class='noreturn_show' wx:if="{{shopcart_list=='' && sale_out==''}}">
+  <image class='noreturn_img' src='/images/no_goods.png'></image>
+  <view class='noreturn_title'>购物车空空如也</view>
+  <view class='goto_buy' bindtap='goto_buy'>去购物</view>
+</view>
+
+
+
+<!-- ----------------------------------脚部导航-------------------------- -->
+<view class='footer_box'>
+  <view class='totlenum' wx:if="{{totlenum>=1}}" >{{totlenum}}</view>
+  <view class='home' bindtap='goto_next' data-url="/pages/index/index">
+    <image class='home_icon' src='/images/home.png'></image>
+    <view class='home_text'>首页</view>
+  </view>
+
+  <view class='home' bindtap='goto_next' data-url="/pages/classification/classification">
+    <image class='home_icon' src='/images/classify.png' data-url="/pages/classification/classification" bindtap='goto_next'></image>
+    <view class='home_text'>分类</view>
+  </view>
+
+  <view class='home'>
+    <image class='home_icon' src='/images/shopcartchoosed.png'></image>
+    <view class='home_text'>购物车</view>
+  </view>
+
+  <view class='mine' bindtap='goto_next' data-url="/pages/mine/mine">
+    <image class='mine_icon' src='/images/my.png'></image>
+    <view class='mine_text'>我的</view>
+  </view>
+</view>

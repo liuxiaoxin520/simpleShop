@@ -1,0 +1,56 @@
+<!--pages/text/text.wxml-->
+<view class='left_nav'>
+  <view class="left_content" wx:for="{{classify}}" wx:key='classify'>
+    <view class="first_text {{active==item.id?'activecolor':''}}"  data-id="{{item.id}}" bindtap='choosedclassify' data-firststate="{{firststate[item.id]}}"><view wx:if="{{active==item.id}}" class='line_color'></view>{{item.name}}</view>
+    <view class='isshow' wx:if="{{choosedclassify == item.id}}">
+    <view class="second_text {{active1==item.id?'activecolor':''}}" wx:for="{{item.list}}" bindtap='choosedsecond' data-id="{{item.id}}" wx:key='details'><view wx:if="{{active1==item.id}}" class='dic_color'></view>{{item.name}}</view>
+    </view>
+  </view>
+</view>
+
+<!-- 右边列表 -->
+<scroll-view class='right_nav' scroll-y="true"  bindscrolltolower="onReachBottom">
+  <view class='right_list clearfix'  wx:for="{{goods_list}}">
+    <image bindtap='gotodetails' class='goodsimg' src='{{item.image_path}}' data-id="{{item.id}}"></image>
+    <view class='right_content'data-id="{{item.id}}">
+      <view bindtap='gotodetails' data-id="{{item.id}}" class='right_title'>{{item.name}}</view>
+      <view bindtap='gotodetails' data-id="{{item.id}}" class='right_describe'>{{item.selling_title}}</view>
+      <view bindtap='gotodetails' data-id="{{item.id}}" class='moneybox'>
+        <text class='newmoney'>￥{{item.saleprice}}</text>
+        <!-- <text class='oldmoney'>￥28.88</text> -->
+      </view>
+      <!-- <image class='cutgoods' src='/images/cut.png'></image> -->
+      <image class='addgoods' bindtap='add_shopcart' data-goods_id="{{item.goods_id}}" data-md_goods_id="{{item.id}}" data-unit_id="{{item.unit_id}}" data-goods_price="{{item.saleprice}}" data-num="{{item.cart_num}}" data-cansale='{{item.limit_num}}' src='/images/add.png' wx:if="{{item.is_sellout == 0}}"></image>
+      <image class='addgoods' bindtap='nomore_add' src='/images/nomore_add.png' wx:if="{{item.is_sellout == 1}}"></image>
+      <view class='numbers' wx:if="{{item.cart_num>=1}}">{{item.cart_num}}</view>
+      <image class='cutgoods' bindtap='nomore_cut' src='/images/nomore_cut.png' wx:if="{{item.cart_num==1}}"  data-goods_id="{{item.goods_id}}" data-md_goods_id="{{item.id}}" data-unit_id="{{item.unit_id}}" data-goods_price="{{item.saleprice}}" data-num="{{item.cart_num}}" data-cansale='{{item.limit_num}}'></image>
+      <image class='cutgoods' bindtap='cut_shopcart' src='/images/cut.png' wx:if="{{item.cart_num>1}}" data-goods_id="{{item.goods_id}}" data-md_goods_id="{{item.id}}" data-unit_id="{{item.unit_id}}" data-goods_price="{{item.saleprice}}" data-num="{{item.cart_num}}" data-cansale='{{item.limit_num}}'></image>
+    </view>
+  </view>
+</scroll-view>
+
+
+
+<!-- ----------------------------------脚部导航-------------------------- -->
+<view class='footer_box'>
+  <view class='totlenum' wx:if="{{cart_total>=1}}" >{{cart_total}}</view>
+  <view class='home' data-url="/pages/index/index" bindtap='goto_next'>
+    <image class='home_icon' src='/images/home.png'></image>
+    <view class='home_text'>首页</view>
+  </view>
+
+  <view class='home'>
+    <image class='home_icon' src='/images/classifychoosed.png'></image>
+    <view class='home_text'>分类</view>
+  </view>
+
+  <view class='home' bindtap='goto_next' data-url="/pages/shoppingcart/shoppingcart">
+    <image class='home_icon' src='/images/shopcart.png'></image>
+    <view class='home_text'>购物车</view>
+  </view>
+
+  <view class='mine' bindtap='goto_next' data-url="/pages/mine/mine">
+    <image class='mine_icon' src='/images/my.png'></image>
+    <view class='mine_text'>我的</view>
+  </view>
+</view>

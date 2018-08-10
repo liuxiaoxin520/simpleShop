@@ -1,0 +1,45 @@
+<!--pages/share/share.wxml-->
+<view class='detail_box clearfix' bindtap='goto_goodsdetails' data-id="{{goods_info.id}}">
+  <image class='goods_img' src='{{goods_info.image_path}}'></image>
+  <view class='goods_info'>
+    <view class='goods_title'>{{goods_info.name}}</view>
+    <view class='sale_time'>预售时间：{{goods_info.ys_time}}</view>
+    <view class='buy_time'>提货时间：{{goods_info.th_time}}</view>
+    <view class='sale_num'>已售<text style='color:#F97A42'>{{goods_info.sale_num}}</text>份/限量<text style='color:#F97A42'>{{goods_info.sold_num}}</text>份</view>
+    <view class='pricebox'>
+      <text class='new_price'>￥{{goods_info.saleprice}}</text>
+      <!-- <text class='old_price'>￥{{goods_info.marketprice}}</text> -->
+    </view>
+  </view>
+</view>
+
+<!-- 背景图 -->
+<view class='btn-green'>
+  <image src='/images/bg_green.png'></image>
+  <!-- 价格 -->
+  <view class='goods-pricebox clear'>
+      <view class='goods-price clear'>
+          <view class='goods-currentprice'>￥{{goods_info.saleprice}}</view>
+          <view class='goods-greyprice'>￥{{goods_info.marketprice}}</view>
+      </view>
+      <!-- 倒计时 -->
+      <view class='goods-time'>
+          <view class='goods-text'>距结束仅剩</view>
+          <view class='goods-endtime clear'>
+              <view class='goods-style'><text class='bg-white'>{{hourtime}}</text>时</view>
+              <view class='goods-style'><text class='bg-white'>{{mintime}}</text>分</view>
+              <view class='goods-style'><text class='bg-white'>{{sectime}}</text>秒</view>
+          </view>
+      </view>
+  </view>
+</view>
+<view class='howmuch_buy'>目前<text style='color: #F97A42;'>{{goods_info.ren}}</text>人参与购买，商品共销售<text style='color: #F97A42;'>{{goods_info.sum}}</text>份</view>
+
+<view class="img_box {{state==1?'look_more':''}} clearfix">
+  <image src='{{item.headimgurl}}' class='imagelist' wx:for="{{goods_info.sale_man_list}}" wx:key='sale_man_list'></image>
+</view>
+<view class='howmuch_buy' bindtap='look_more' wx:if="{{state==0}}">点击展开</view>
+<view class='howmuch_buy' bindtap='look_more' wx:if="{{state==1}}">点击收起</view>
+<button class="Contact_service"  open-type="share">
+  分享给好友
+</button>

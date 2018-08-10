@@ -1,0 +1,21 @@
+<!--pages/mine/mymoney/mymoney.wxml-->
+<!-- 充值 -->
+<view class='clearfix'>
+  <view class="money_box {{choosed_id == index+1?'border_color':''}}" wx:for="{{3}}" data-choosed_id = "{{index+1}}" bindtap='choose'>
+    <image wx:if="{{choosed_id == index+1}}"  src='/images/choose_icon.png' class='choose_icon'></image>
+    <image src='/images/giving_bg.png' class='giving_bg'></image>
+    <view class='giving_much'>赠600元</view>
+    <view class='up_much'>300元</view>
+    <view class='up_text'>得350元<text style='color:#f97d47'>+黄金会员</text></view>
+  </view>
+</view>
+
+<view class="choosed_color" wx:if="{{choosed_id}}" bindtap='sure_button'>确认充值</view>
+<view class="sure_button" wx:if="{{!choosed_id}}">确认充值</view>
+
+
+<!-- 友好提醒 -->
+<view class='tipbox'>
+  <view class='tiptext'>1、余额可用于购买青蛙家的商品！</view>
+  <view class='tiptext'>2、余额不会过期，不能体现或赠送他人！</view>
+</view>
